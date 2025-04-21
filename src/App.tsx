@@ -1,10 +1,15 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { WelcomePage } from './components/WelcomePage'
+import { IdPage } from './components/IdPage'
 
 function App() {
   return (
-    <div>
-      Welcome
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/id" element={<IdPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
