@@ -1,51 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
 #root {
-  font-family: 'Pixelify Sans', sans-serif;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  font-family: 'Jersey 15', sans-serif;
+  height:100%;
+  width:100%;
+  padding: 0;
+  margin: 0;
 }
 h1 {
-  font-size: 48px;
+  font-size: 60px;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 48px;
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 36px;
 }
 
 body {
-  font-size: 18px;
+  font-size: 24px;
   color: white;
   background-color: #06402b;
 }
 
-.start-button {
+p {
+  font-size: 20px;
+  color: white;
+}
+
+.basic-button {
   background-color: transparent;
   color: white;
   border: 2px solid white;
-  border-radius: 4px;
-  padding: 10px 30px;
+  border-radius: 10px;
+  padding: 10px 20px;
   font-size: 20px;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: 10px;
   transition: all 0.3s ease;
 }
 
-.start-button:hover {
+.basic-button:hover {
   background-color: white;
   color: #06402b;
   border: 2px solid #06402b;
   transform: scale(1.025);
+}
+
+.basic-button:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.text-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  
+}
+
+.text-button:hover {
+  text-decoration: underline;
 }
 
 

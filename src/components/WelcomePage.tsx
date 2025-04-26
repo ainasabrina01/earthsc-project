@@ -5,9 +5,9 @@ export function WelcomePage() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="flex justify-center items-center flex-col h-screen">
       <h1>Escape Room: Rocked Out</h1>
-      <button className="start-button" onClick={() => navigate("/id")}>Start</button>
+      <button className="basic-button" onClick={() => navigate("/profile")}>Start The Game</button>
     </div>
   );
 }
