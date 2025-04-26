@@ -7,7 +7,7 @@ export function WelcomePage() {
   return (
     <div className="flex justify-center items-center flex-col h-screen">
       <h1>Escape Room: Rocked Out</h1>
-      <button className="basic-button" onClick={() => navigate("/profile")}>Start The Game</button>
+      <button className="basic-button" onClick={() => navigate("/profile")}>Start</button>
     </div>
   );
 }
