@@ -337,7 +337,7 @@ export function Room3() {
       setRoomQuizSubmitted(true);
       
       if (roomQuizSelected === "C") {
-        setRoomQuizFeedback("Correct! Yosemite Valley was carved by glaciers during the last ice age.");
+        setRoomQuizFeedback("Correct!");
         setQuizAnsweredCorrectly(true); // Mark the quiz as correctly answered
         
         // After a short delay, hide the quiz and show the hint

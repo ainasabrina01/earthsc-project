@@ -214,7 +214,8 @@ export function Room2() {
     // New function to check the door password
     const checkDoorPassword = () => {
       setLoadingText("Checking password...");
-      if (doorPassword.toLowerCase().includes("yellowstone")) {
+      const normalized = doorPassword.toLowerCase().replace(/\s+/g, "");
+      if (normalized.includes("yellowstone")) {
         showText("You hear some wiring sounds indicating it's unlocking the door. The door slides open with a soft mechanical hum.");
         setActions([
           { label: "Go to next room", key: "go-next-room" }
