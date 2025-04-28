@@ -146,6 +146,8 @@ export function Room3() {
     const handleAction = (key: string) => {
       setPasscodeError("");
       setSafePasscodeError("");
+      setShowPasscode(false);
+      setShowSafePasscode(false);
       setLastClickedAction(key);
       
       // Hide puzzles unless their specific key is clicked
@@ -205,13 +207,10 @@ export function Room3() {
             ? filtered
             : [...filtered, { label: "Check the painting", key: "check-painting" }];
         });
-        setShowPasscode(false);
-        setShowSafePasscode(false);
       } else if (key === "check-painting") {
         setLoadingText("Inspecting the painting...");
         if (!hasReadNote) {
           showText("You look at the paintings and see a beautiful landscape of Yosemite National Park.");
-          setShowSafePasscode(false);
           // Only keep 'Check the painting' if it is already present
           setActions((prev) => prev.some(a => a.key === "check-painting") ? prev : prev);
         } else {
@@ -221,7 +220,6 @@ export function Room3() {
           // Only keep 'Check the painting' if it is already present
           setActions((prev) => prev.some(a => a.key === "check-painting") ? prev : prev);
         }
-        setShowPasscode(false);
       } else if (key === "read-note") {
         setLoadingText("Reading the note...");
         showText("The note reads: \n\n'25 19 13 20 \nCheck behind the paintings'");
@@ -244,9 +242,6 @@ export function Room3() {
           
           return updated;
         });
-        
-        setShowPasscode(false);
-        setShowSafePasscode(false);
       } else if (key === "go-to-door") {
         setLoadingText("Checking the door...");
         if (hasKey) {
@@ -257,11 +252,9 @@ export function Room3() {
         } else {
           showText("The door is locked. There should be a key somewhere in this room.");
         }
-        setShowPasscode(false);
       } else if (key === "check-drawer") {
         setLoadingText("Checking the drawer...");
         showText("You pulled the drawer and found different national park brochures. You wonder if the person is collecting them.");
-        setShowPasscode(false);
       } else if (key === "exit-game") {
         console.log("Room3: exit-game action triggered");
         setLoadingText("Exiting game...");
@@ -276,7 +269,6 @@ export function Room3() {
       } else {
         setLoadingText("Unknown action...");
         showText("Unknown action.");
-        setShowPasscode(false);
       }
       
       // Add debug log
