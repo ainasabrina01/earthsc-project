@@ -23,6 +23,10 @@ h3 {
   font-size: 36px;
 }
 
+h4 {
+  font-size: 32px;
+}
+
 body {
   font-size: 24px;
   color: white;
@@ -68,6 +72,41 @@ p {
 
 .text-button:hover {
   text-decoration: underline;
+}
+
+.animated-dash-box {
+  border-radius: 0px;
+  padding: 32px 48px;
+  display: inline-block;
+  position: relative;
+  background: rgba(0,0,0,0.2);
+  /* Classic marching ants effect: dashes travel clockwise around the box */
+  background-image:
+    repeating-linear-gradient(90deg, #fff 0 8px, transparent 8px 16px),   /* top */
+    repeating-linear-gradient(180deg, #fff 0 8px, transparent 8px 16px),  /* right */
+    repeating-linear-gradient(90deg, #fff 0 8px, transparent 8px 16px),   /* bottom */
+    repeating-linear-gradient(180deg, #fff 0 8px, transparent 8px 16px);  /* left */
+  background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  background-position: 0 0, 100% 0, 0 100%, 0 0;
+  background-repeat: no-repeat;
+  animation: dashmove 1s linear infinite;
+}
+
+@keyframes dashmove {
+  0% {
+    background-position:
+      0 0,      /* top: left to right */
+      100% 0,   /* right: top to bottom */
+      0 100%,   /* bottom: right to left */
+      0 0;      /* left: bottom to top */
+  }
+  100% {
+    background-position:
+      16px 0,      /* top: left to right */
+      100% 16px,   /* right: top to bottom */
+      -16px 100%,  /* bottom: right to left */
+      0 -16px;     /* left: bottom to top */
+  }
 }
 
 

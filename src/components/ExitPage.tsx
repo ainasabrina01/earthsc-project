@@ -1,17 +1,26 @@
 import "../App.css";
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGame } from './GameContext';
 
-export function IntroStoryPage() {
+export function ExitPage() {
   const navigate = useNavigate();
+  const { roomsCompleted, redirectToAvailableRoom } = useGame();
+
+  // Check if all rooms are completed, if not redirect to the appropriate room
+  useEffect(() => {
+    // Make sure room1, room2, and room3 are all completed
+    if (!roomsCompleted.room1 || !roomsCompleted.room2 || !roomsCompleted.room3) {
+      console.log("Some rooms are not completed yet. Redirecting...");
+      redirectToAvailableRoom();
+    } else {
+      console.log("All rooms completed. Showing exit page.");
+    }
+  }, [roomsCompleted, redirectToAvailableRoom]);
 
   const lines = [
-    "In the lab, you are doing experiments and writing up a lab report.",
-    "Once you're done, you pack up your things and try to leave - but the door won't open.",
-    "You jiggle the handle, push harder, but it's completely stuck.",
-    "With no phone signal, you're left with no choice but to find another way out.",
-    "You are calm and collected since you are confident that you will get out of this maze lab.",
-    "You decide to check the room connected to the lab."
+    "You find yourself in the hallway and realize that you are out of the lab maze!",
+    "You feel relieved and walk back home."
   ];
 
   const [displayedLines, setDisplayedLines] = useState(Array(lines.length).fill(""));
@@ -81,9 +90,16 @@ export function IntroStoryPage() {
         <h3 key={idx} className="ml-60 text-2xl">{text}</h3>
       ))}
       {typingComplete && (
-        <div className="flex justify-end mr-60 mt-12">
-          <button className="basic-button" onClick={() => navigate("/room1")}>Go</button>
-        </div>
+        <>
+          <div className="flex justify-center mt-32">
+            <div className="animated-dash-box">
+              <h2 className="text-3xl font-bold">Thank you for playing :)</h2>
+            </div>
+          </div>
+          <div className="flex justify-center mt-12">
+            <button className="text-button" onClick={() => navigate("/reference")}>References</button>
+          </div>
+        </>
       )}
     </div>
   );
